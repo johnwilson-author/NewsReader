@@ -1,0 +1,100 @@
+[versions]
+agp = "9.1.0"
+kotlin = "2.3.20"
+ksp = "2.3.2"
+coreKtx = "1.18.0"
+junit = "4.13.2"
+lifecycle = "2.10.0"
+activity = "1.13.0"
+composeBom = "2026.03.01"
+materialIconsExtended = "1.7.8"
+navigationCompose = "2.9.7"
+coroutines = "1.10.2"
+mockk = "1.14.9"
+turbine = "1.2.1"
+hilt = "2.59.2"
+hiltNavigationCompose = "1.3.0"
+room = "2.8.4"
+datastore = "1.2.1"
+androidxTestRunner = "1.7.0"
+# ── Ch.7: Networking ──────────────────────────────────────────────────────────
+# Retrofit is the HTTP client abstraction. It turns an interface of annotated
+# methods into fully implemented network calls at runtime.
+retrofit = "3.0.0"
+# OkHttp is the underlying HTTP engine Retrofit delegates to. We add it
+# explicitly to use its interceptor API (logging, API key injection).
+okhttp = "5.3.2"
+# Moshi parses JSON into Kotlin data classes. We use KSP codegen (not
+# reflection) — the adapters are generated at compile time, which is faster
+# and avoids the overhead of reading annotations at runtime.
+moshi = "1.15.2"
+# ── Ch.7: Paging 3 ───────────────────────────────────────────────────────────
+# Paging 3 is Google's library for loading large datasets in chunks,
+# integrating with Room (PagingSource) and the network (RemoteMediator).
+paging = "3.4.2"
+
+[libraries]
+# ── Existing ──────────────────────────────────────────────────────────────────
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtended" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
+datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
+
+# ── Ch.7: Retrofit ─────────────────────────────────────────────────────────────
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+# The Moshi converter tells Retrofit to use Moshi for JSON ↔ Kotlin conversion.
+retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+
+# ── Ch.7: OkHttp ───────────────────────────────────────────────────────────────
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+# HttpLoggingInterceptor prints the full request/response to Logcat in debug builds.
+# NEVER include it in release builds — it logs headers which can expose secrets.
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+# ── Ch.7: Moshi ────────────────────────────────────────────────────────────────
+# Core Moshi library + Kotlin support (null safety, default params, data classes).
+moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
+# KSP annotation processor — generates type-safe JsonAdapters at compile time.
+# This is the preferred approach over moshi-kotlin-reflect (reflection at runtime).
+moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+
+# ── Ch.7: Paging 3 ─────────────────────────────────────────────────────────────
+paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
+# Compose integration: provides collectAsLazyPagingItems() and LazyPagingItems.
+paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
+# Room + Paging bridge: enables @Query functions that return PagingSource<Int, T>.
+room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }
